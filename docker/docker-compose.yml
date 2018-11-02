@@ -1,0 +1,41 @@
+version: '2'
+
+services: 
+
+  volume_data: 
+    image: tianon/true
+    volumes:
+        - ./data/redis/:/data
+
+  volume_frontend_sources: 
+    image: tianon/true
+    volumes:
+        - ../frontend/:/app
+
+  volume_backend_sources: 
+    image: tianon/true
+    volumes:
+        - ../api/:/app
+
+  redis: 
+    build: ./redis
+    volumes_from:
+      - volume_data
+
+  backend:
+    build: ./backend
+    links:
+      - redis
+    volumes_from:
+      - volume_backend_sources
+    ports:
+      - "1081:1080"
+
+  frontend:
+    build: ./frontend
+    links: 
+      - backend
+    volumes_from:
+      - volume_frontend_sources
+    ports:
+      - "1080:1080"

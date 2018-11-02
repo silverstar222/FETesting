@@ -1,0 +1,33 @@
+<ng-container *ngIf="isReady">  
+    <header class="header">
+        <div class="header--back" routerLink='/'>
+            Back
+        </div>
+
+        <div class="header--title">
+            {{ drink.name }}
+        </div>
+    </header>
+
+    <div class="cocktail" *ngIf="isReady">
+        <img [src]="drink.image" class="cocktail--image">
+
+        <div class="section">
+            <ul class="section--content cocktail--ingridients">
+                <li *ngFor="let ingridient of drink.ingridients; let i = index">
+                    {{ drink.measurements[i] }} - {{ ingridient }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section--title">
+                How to prepare
+            </div>
+
+            <div class="section--content cocktail--instructions">
+                {{ drink.instructions }}
+            </div>
+        </div>
+    </div>
+</ng-container> 

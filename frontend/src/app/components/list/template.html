@@ -1,0 +1,24 @@
+<header class="header">
+    <div class="header--title">
+        Random drinks
+    </div>
+
+    <div class="search header--search">
+        <div class="search--icon"></div>
+        <input class="search--input" [(ngModel)]="searchTerm" placeholder="Search...">
+    </div>
+</header>
+
+<div class="list" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+    <div *ngFor="let cocktail of (pack | search:searchTerm)" class="list--item">
+        <div class="cocktail" [routerLink]='[cocktail.id]'>
+            <div class="cocktail--title">
+                {{ cocktail.title }}
+            </div>
+
+            <div class="cocktail--image">
+                <img [src]="cocktail.image">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    flex-flow: row;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cocktail {
+    display: block;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 15px 25px -5px rgba(0,0,0,.25);
+
+    &--image {
+        height: auto;
+        width: auto;
+        max-width: 100%;
+    }
+
+    &--ingridients {
+        list-style: none;
+        margin: 10px 0;
+        padding: 0;
+    }
+}
+
+.section {
+    display: block;
+
+    &--title {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+}
